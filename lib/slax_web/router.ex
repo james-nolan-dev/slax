@@ -1,4 +1,5 @@
 defmodule SlaxWeb.Router do
+  alias ChatRoomLive
   use SlaxWeb, :router
 
   pipeline :browser do
@@ -17,8 +18,8 @@ defmodule SlaxWeb.Router do
   scope "/", SlaxWeb do
     pipe_through :browser
 
-    get "/home", PageController, :home
     live "/", ChatRoomLive
+    live "/rooms/:id", ChatRoomLive
   end
 
   # Other scopes may use custom stacks.
